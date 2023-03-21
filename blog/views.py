@@ -12,3 +12,14 @@ def index(request):
             'posts': posts,     #context - 글 리스트 통째로 넘겨줌
         }
     )
+
+def single_post_page(request, post_num):
+    post = Post.objects.get(pk=post_num)
+
+    return render(
+        request,
+        'blog/single_post_page.html',
+        {
+            'post': post,
+        }
+    )
