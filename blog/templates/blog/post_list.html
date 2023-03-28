@@ -1,36 +1,35 @@
 {% extends 'blog/base.html' %}
 {% block main_area %}
-                <h1>Blog</h1>
+    <h1>Blog</h1>
 
-                {% for p in post_list %}
-                <!-- Blog Post -->
-                <div class="card mb-4">
-                    {% if p.head_image %}
-                    <!-- <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap"> -->
-                        <img class="card-img-top" src="{{ p.head_image.url }}" alt="{{ p }} head image">
-                    {% else %}
-                        <img class="card-img-top" src="http://placehold.it/750x300" alt="random_image">
-                    {% endif %}
-                    <div class="card-body">
-                        <h2 class="card-title">{{ p.title}}</h2>
-                        <p class="card-text">{{ p.content | truncatewords:45 }}</p>
-                        <a href="{{ p.get_absolute_url }}" class="btn btn-primary">Read More &rarr;</a>
-                    </div>
-                    <div class="card-footer text-muted">
-                        Posted on {{ p.created_at}} by
-                        <a href="#">작성자명 쓸 위치(개발예정)</a>
-                    </div>
-                </div>
-                {% endfor %}
+    {% for p in post_list %}
+        <!-- Blog Post -->
+        <div class="card mb-4">
+            {% if p.head_image %}
+                <!-- <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap"> -->
+                <img class="card-img-top" src="{{ p.head_image.url }}" alt="{{ p }} head image">
+            {% else %}
+                <img class="card-img-top" src="http://placehold.it/750x300" alt="random_image">
+            {% endif %}
+            <div class="card-body">
+                <h2 class="card-title">{{ p.title}}</h2>
+                <p class="card-text">{{ p.content | truncatewords:45 }}</p>
+                <a href="{{ p.get_absolute_url }}" class="btn btn-primary">Read More &rarr;</a>
+            </div>
+            <div class="card-footer text-muted">
+                Posted on {{ p.created_at}} by
+                <a href="#">작성자명 쓸 위치(개발예정)</a>
+            </div>
+        </div>
+    {% endfor %}
 
-
-                <!-- Pagination -->
-                <ul class="pagination justify-content-center mb-4">
-                    <li class="page-item">
-                        <a class="page-link" href="#">&larr; Older</a>
-                    </li>
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#">Newer &rarr;</a>
-                    </li>
-                </ul>
-                {% endblock %}
+    <!-- Pagination -->
+    <ul class="pagination justify-content-center mb-4">
+        <li class="page-item">
+            <a class="page-link" href="#">&larr; Older</a>
+        </li>
+        <li class="page-item disabled">
+            <a class="page-link" href="#">Newer &rarr;</a>
+        </li>
+    </ul>
+{% endblock %}
