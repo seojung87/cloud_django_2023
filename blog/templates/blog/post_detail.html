@@ -90,7 +90,19 @@
             <a href="{{ post.file_upload.url }}" class="btn btn-outline-dark" role="button" download>Download</a>
             {{ post.get_file_name }}
         {% endif %}
+
         <hr>
+        {% if post.tag.exists %}
+            <br/>
+            <i class = "fas fa-tags">
+            {% for tag in post.tag.iterator %}
+                <a href = "{{ tag.get_absolute_url }}"> {{ tag }}</a>
+            {% endfor %}
+            </i>
+            <br/>
+            <br/>
+        {% endif %}
+
 
         <!-- Comments Form -->
         <div class="card my-4">
@@ -165,17 +177,14 @@
             <div class="row">
               <div class="col-lg-6">
                 <ul class="list-unstyled mb-0">
+                    {% for category in categories %}
                   <li>
-                    <a href="#">Web Design</a>
+                    <a href="#">{{ category.name }}</a>
                   </li>
-                  <li>
-                    <a href="#">HTML</a>
-                  </li>
-                  <li>
-                    <a href="#">Freebies</a>
-                  </li>
+                    {% endfor %}
                 </ul>
               </div>
+            <!--
               <div class="col-lg-6">
                 <ul class="list-unstyled mb-0">
                   <li>
@@ -189,6 +198,7 @@
                   </li>
                 </ul>
               </div>
+              -->
             </div>
           </div>
         </div>
